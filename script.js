@@ -1,15 +1,9 @@
-/* ============================================================
-   EMAILJS SETUP — fill these in before the "Place Order" button
-   will actually send emails. See the notes at the bottom of this
-   file for a step-by-step guide.
-   ============================================================ */
 const EMAILJS_PUBLIC_KEY   = "XwQhLDM3QnrstIw-O";     // Account > General
 const EMAILJS_SERVICE_ID   = "service_jx5qrw8";     // Email Services
 const EMAILJS_TEMPLATE_USER  = "template_bcrkuct";  // sent to the customer
 const EMAILJS_TEMPLATE_ADMIN = "template_0n1jzhy"; // sent to you
 const ADMIN_EMAIL = "shiraksha1@gmail.com";
 
-// Paste your Apps Script Web App URL here (from apps-script-code.gs.txt setup step 6)
 const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbz531_tBgakAFeYNKWx7dLi3hxS7ONYmm8h-t-RfrLCTS4eVKvhcsmbEIED8w7FIrVqEg/exec";
 
 if (window.emailjs && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
@@ -239,48 +233,3 @@ sendOrderBtn.addEventListener('click', async function(e){
     sendOrderBtn.removeAttribute('aria-disabled');
   }
 });
-
-/* ============================================================
-   SETUP GUIDE — do this once, in this order:
-
-   1. Create a free account at https://www.emailjs.com
-   2. Email Services -> Add a service (e.g. connect your Gmail) ->
-      copy the Service ID into EMAILJS_SERVICE_ID above.
-   3. Account -> General -> copy your Public Key into
-      EMAILJS_PUBLIC_KEY above.
-   4. Email Templates -> create TWO templates:
-
-      a) "Admin" template (sent to you):
-         To email:   {{to_email}}
-         Subject:    New order — Ruviksha ({{order_id}})
-         Body should reference: {{order_id}}, {{customer_name}}, {{branch}},
-         {{mobile}}, {{customer_email}}, {{item}}, {{quantity}},
-         {{total}}, {{advance}}, {{payment_method}}, {{transaction_id}}
-         Copy this template's ID into EMAILJS_TEMPLATE_ADMIN above.
-
-      b) "Customer confirmation" template (sent to the buyer):
-         To email: {{to_email}}
-         Subject:  Order Successfully Placed — {{order_id}}
-         Body:
-            Hi,
-            Thank you for your order!
-            Your Order ID is: {{order_id}}
-            Please keep this for reference — quote it if you contact
-            us about your order.
-            We're happy to let you know that your order has been
-            successfully placed and is now being processed.
-            If you have any questions, feel free to reply to this email.
-            Thank you for shopping with us!
-            Best regards,
-            The Support Team
-         Copy this template's ID into EMAILJS_TEMPLATE_USER above.
-
-   5. Admin dashboard / order tracking (Google Sheet backend):
-      - Follow the setup steps at the top of apps-script-code.gs.txt
-        to create the Sheet + Apps Script Web App.
-      - Paste the Web App URL into SHEET_API_URL above.
-      - Paste the SAME URL into admin.html (SHEET_API_URL constant).
-      - Open admin.html (keep this URL private — don't link it from
-        your public site) and enter the passcode you set in the
-        Apps Script code to view and update orders.
-   ============================================================ */
